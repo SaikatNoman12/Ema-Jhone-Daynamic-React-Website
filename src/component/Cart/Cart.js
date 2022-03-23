@@ -4,15 +4,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowRightArrowLeft, faDeleteLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Cart = ({cart}) => {
+
+    let total = 0;
+    let shipping = 0;
+    for(const product of cart){
+        total = product.price + total;
+        shipping = product.shipping + shipping;
+
+    } 
+    const tax = (total * 0.10).toFixed(2);
+
+    const grnadTotal = total + shipping + parseFloat(tax);
+
+
     return (
-        <div className=''>
+        <div className='cart'>
             <h2 className='cart-title'>Order Summary</h2>
             <div className='cart-body'>
                 <p>Selected items: {cart.length}</p>
-                <p>Total Price: $1112</p>
-                <p>Total Shipping Charge: $5</p>
-                <p>Tax: $114</p>
-                <h3 className='cart-total'>Grand Total: $1555</h3>
+                <p>Total Price: ${total}</p>
+                <p>Total Shipping Charge: ${shipping}</p>
+                <p>Tax: {tax}</p>
+                <h3 className='cart-total'>Grand Total: ${grnadTotal}</h3>
             </div>
             
             <div className='cart-btn'>

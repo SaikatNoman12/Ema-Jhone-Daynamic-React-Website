@@ -1,3 +1,8 @@
+.cart{
+    position: sticky;
+    top: 0;
+}
+
 .cart-title{
     font-weight: 400;
     text-align: center;
